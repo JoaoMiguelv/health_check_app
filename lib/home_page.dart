@@ -7,10 +7,15 @@ class HomePage extends StatelessWidget {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+      // appBar: AppBar(
+      //   backgroundColor: Colors.white,
+      // ),
       body: Container(
         child: Center(
           child: Column(
             children: [
+              SizedBox(height: 20),
+
               // Adicionando a logo no topo da tela
               Align(
                 alignment: Alignment.topCenter,
@@ -25,10 +30,28 @@ class HomePage extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(20.0),
                 child: TextField(
-                  style: TextStyle(color: Colors.white), // Cor do texto
+                  style: TextStyle(color: Colors.black), // Cor do texto
                   cursorColor: Color(0xFF91041C), // Cor do cursor
                   decoration: InputDecoration(
-                    hintText: 'Olá! Qual o seu nome?',
+                    hintText: 'Usuário',
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(
+                          color: Color(
+                              0xFF91041C)), // Cor da linha quando o campo está focado
+                    ),
+                  ),
+                ),
+              ),
+
+              Padding(
+                padding: const EdgeInsets.all(20.0),
+                child: TextField(
+                  style: TextStyle(color: Colors.black), // Cor do texto
+                  keyboardType: TextInputType.visiblePassword,
+                  obscureText: true, // Esconde o texto digitado
+                  cursorColor: Color(0xFF91041C), // Cor do cursor
+                  decoration: InputDecoration(
+                    hintText: 'Senha',
                     focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
                           color: Color(
@@ -56,7 +79,7 @@ class HomePage extends StatelessWidget {
                     primary: Color(0xFF91041C), // Cor do botão
                   ),
                   child: Text(
-                    'Continuar',
+                    'Login',
                     style:
                         TextStyle(color: Colors.white), // Cor do texto do botão
                   ),

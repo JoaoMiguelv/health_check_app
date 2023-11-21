@@ -18,6 +18,7 @@ class DiagnosisPage extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
+          SizedBox(height: 45),
           // Elementos centralizados no topo
           Padding(
             padding: const EdgeInsets.only(top: 20),
