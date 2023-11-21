@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 
 class DiagnosisPage extends StatelessWidget {
-  final List<String> selectedSymptoms;
+  final Map<String, dynamic> selectedSymptoms;
+  final Map<String, dynamic> responseBody;
 
-  DiagnosisPage({required this.selectedSymptoms});
+  DiagnosisPage({
+    required this.selectedSymptoms,
+    required this.responseBody,
+  });
 
   @override
   Widget build(BuildContext context) {
-    String diagnosisResult = generateDiagnosis(selectedSymptoms);
+    String diagnosisResult = generateDiagnosis(selectedSymptoms, responseBody);
 
     return Scaffold(
       appBar: AppBar(
@@ -19,15 +23,14 @@ class DiagnosisPage extends StatelessWidget {
     );
   }
 
-  String generateDiagnosis(List<String> selectedSymptoms) {
-    if (selectedSymptoms.contains('febre') &&
-        selectedSymptoms.contains('tosse')) {
-      return 'Resfriado';
-    } else if (selectedSymptoms.contains('manchas') &&
-        selectedSymptoms.contains('coceira')) {
-      return 'Catapora';
-    } else {
-      return 'Indefinido';
+  String generateDiagnosis(Map<String, dynamic> selectedSymptoms,
+      Map<String, dynamic> responseBody) {
+
+    if (responseBody.containsKey('prognosis')) {
+      String apiDiagnosis = responseBody['prognosis'];
+      return apiDiagnosis;
     }
+
+    return 'Diagnóstico não disponível';
   }
 }

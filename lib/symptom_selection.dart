@@ -1,7 +1,8 @@
 import 'dart:convert' as convert;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:health_check_app/diagnosis_page.dart';
+import 'package:http/http.dart' as http;
+import 'diagnosis_page.dart';
 
 class SymptomSelectionPage extends StatefulWidget {
   @override
@@ -11,7 +12,9 @@ class SymptomSelectionPage extends StatefulWidget {
 class _SymptomSelectionPageState extends State<SymptomSelectionPage> {
   late String jsonString;
   late List<Category> categories;
-  List<String> selectedSymptoms = [];
+  late Map<String, dynamic> selectedSymptoms = {};
+
+  bool get isButtonEnabled => selectedSymptoms.length >= 5;
 
   @override
   void initState() {
@@ -29,6 +32,24 @@ class _SymptomSelectionPageState extends State<SymptomSelectionPage> {
       print('Erro ao carregar o arquivo mockdata.json: $e');
     }
   }
+
+  // Future<void> loadMockData() async {
+  //   Uri url =
+  //       Uri.parse('https://disease-prognosis-api.azurewebsites.net/symptoms');
+
+  //   try {
+  //     final response = await http.get(url);
+
+  //     if (response.statusCode == 200) {
+  //       jsonString = response.body;
+  //       setState(() {
+  //         categories = loadCategoriesFromJson();
+  //       });
+  //     }
+  //   } catch (e) {
+  //     print('Erro na requisição GET: $e');
+  //   }
+  // }
 
   List<Category> loadCategoriesFromJson() {
     Map<String, dynamic> jsonData = convert.jsonDecode(jsonString);
@@ -52,30 +73,69 @@ class _SymptomSelectionPageState extends State<SymptomSelectionPage> {
         category.symptoms.forEach((s) {
           if (s.key == symptomKey) {
             s.isSelected = isSelected;
+            selectedSymptoms[s.key] = isSelected;
           }
         });
       });
-
-      if (isSelected) {
-        selectedSymptoms.add(symptomKey);
-      } else {
-        selectedSymptoms.remove(symptomKey);
-      }
     });
   }
 
-  void printSelectedSymptoms() {
-    // ignore: avoid_print
-    print("Sintomas Selecionados: $selectedSymptoms");
+  void printSelectedSymptoms() async {
+    if (selectedSymptoms.length >= 5) {
+      print('Sintomas Selecionados: $selectedSymptoms');
+
+      String requestBody = convert.jsonEncode(selectedSymptoms);
+
+      Uri url = Uri.parse(
+          'https://disease-prognosis-api.azurewebsites.net/prognosis');
+      try {
+        final response = await http.post(
+          url,
+          body: requestBody,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        );
+
+        if (response.statusCode == 200) {
+          Map<String, dynamic> diagnosisResult =
+              convert.jsonDecode(response.body);
+
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => DiagnosisPage(
+                selectedSymptoms: selectedSymptoms,
+                responseBody: diagnosisResult,
+              ),
+            ),
+          );
+        }
+      } catch (e) {
+        print('Erro na requisição POST: $e');
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Erro na requisição POST. Tente novamente.'),
+          ),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Selecione pelo menos 5 sintomas'),
+        ),
+      );
+    }
+
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('SINTOMAS'),
+        title: Text('Sintomas'),
       ),
-      // ignore: unnecessary_null_comparison
       body: categories != null
           ? ListView.builder(
               itemCount: categories.length,
@@ -90,17 +150,9 @@ class _SymptomSelectionPageState extends State<SymptomSelectionPage> {
               child: CircularProgressIndicator(),
             ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          print('Sintomas Selecionados: ${selectedSymptoms}');
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) =>
-                  DiagnosisPage(selectedSymptoms: selectedSymptoms),
-            ),
-          );
-        },
+        onPressed: isButtonEnabled ? printSelectedSymptoms : null,
         child: Icon(Icons.check),
+        backgroundColor: isButtonEnabled ? Colors.blue : Colors.grey,
       ),
     );
   }
