@@ -134,7 +134,8 @@ class _SymptomSelectionPageState extends State<SymptomSelectionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Sintomas'),
+        title: Text('Selecione 5 ou mais sintomas'),
+        backgroundColor: Color(0xFF91041C),
       ),
       body: categories != null
           ? ListView.builder(
@@ -152,7 +153,7 @@ class _SymptomSelectionPageState extends State<SymptomSelectionPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: isButtonEnabled ? printSelectedSymptoms : null,
         child: Icon(Icons.check),
-        backgroundColor: isButtonEnabled ? Colors.blue : Colors.grey,
+        backgroundColor: isButtonEnabled ? Color(0xFF91041C) : Colors.grey,
       ),
     );
   }

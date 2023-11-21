@@ -10,11 +10,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Your App Title',
+      title: 'Health Check',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       home: HomePage(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
