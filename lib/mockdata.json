@@ -1,45 +1,32 @@
 {
   "Gerais": {
-    "itching": "Coceira",
-    "skin_rash": "Erupção cutânea",
-    "nodal_skin_eruptions": "Erupções cutâneas nodais",
     "continuous_sneezing": "Espirros contínuos",
     "shivering": "Arrepios",
     "chills": "Calafrios",
-    "joint_pain": "Dor nas articulações",
-    "muscle_wasting": "Atrofia muscular",
     "fatigue": "Fadiga",
     "weight_gain": "Ganho de peso",
     "weight_loss": "Perda de peso",
-    "restlessness": "Inquietação",
-    "lethargy": "Letargia",
     "fever": "Febre",
     "mild_fever": "Febre leve",
-    "high_fever": "Febre alta"
+    "high_fever": "Febre alta",
+    "pain_behind_the_eyes": "Dor atrás dos olhos"
   },
   "Digestivos": {
     "stomach_pain": "Dor de estômago",
     "acidity": "Acidez",
     "ulcers_on_tongue": "Úlceras na língua",
     "vomiting": "Vômito",
-    "burning_micturition": "Micção ardente",
-    "spotting_urination": "Urinação com manchas",
     "indigestion": "Indigestão",
     "abdominal_pain": "Dor abdominal",
     "diarrhoea": "Diarreia",
     "constipation": "Constipação",
     "nausea": "Náusea",
     "loss_of_appetite": "Perda de apetite",
-    "pain_behind_the_eyes": "Dor atrás dos olhos",
-    "back_pain": "Dor nas costas"
+    "stomach_bleeding": "Hemorragia estomacal"
   },
   "Respiratórios": {
     "cough": "Tosse",
     "breathlessness": "Falta de ar",
-    "sweating": "Suor",
-    "dehydration": "Desidratação",
-    "high_fever": "Febre alta",
-    "sunken_eyes": "Olhos fundos",
     "throat_irritation": "Irritação na garganta",
     "redness_of_eyes": "Vermelhidão nos olhos",
     "sinus_pressure": "Pressão nos seios da face",
@@ -53,7 +40,8 @@
     "yellow_urine": "Urina amarela",
     "yellowing_of_eyes": "Amarelamento dos olhos",
     "foul_smell_of_urine": "Cheiro desagradável da urina",
-    "continuous_feel_of_urine": "Sensação contínua de urina"
+    "continuous_feel_of_urine": "Sensação contínua de urina",
+    "dark_urine": "Urina escura"
   },
   "Neurológicos": {
     "headache": "Dor de cabeça",
@@ -68,19 +56,15 @@
     "coma": "Coma"
   },
   "Dermatológicos": {
+    "nodal_skin_eruptions": "Erupções cutâneas nodais",
+    "itching": "Coceira",
+    "skin_rash": "Erupção cutânea",
     "patches_in_throat": "Manchas na garganta",
     "yellowish_skin": "Pele amarelada",
-    "dark_urine": "Urina escura",
     "red_spots_over_body": "Manchas vermelhas no corpo",
-    "belly_pain": "Dor abdominal",
-    "abnormal_menstruation": "Menstruação anormal",
     "dischromic_patches": "Manchas discrômicas",
-    "watering_from_eyes": "Olhos lacrimejantes",
-    "increased_appetite": "Aumento do apetite",
-    "blackheads": "Cravos",
     "scurrying": "Escamação",
     "skin_peeling": "Descamação da pele",
-    "silver_like_dusting": "Resíduo prateado",
     "small_dents_in_nails": "Pequenos entalhes nas unhas",
     "inflammatory_nails": "Unhas inflamadas",
     "blister": "Bolha",
@@ -100,14 +84,19 @@
     "knee_pain": "Dor no joelho",
     "hip_joint_pain": "Dor na articulação do quadril",
     "cramps": "Câimbras",
-    "bruising": "Contusões"
+    "bruising": "Contusões",
+    "back_pain": "Dor nas costas",
+    "joint_pain": "Dor nas articulações",
+    "muscle_wasting": "Atrofia muscular"
   },
   "Psicológicos e Emocionais": {
     "anxiety": "Ansiedade",
     "mood_swings": "Oscilações de humor",
     "depression": "Depressão",
     "irritability": "Irritabilidade",
-    "lack_of_concentration": "Falta de concentração"
+    "lack_of_concentration": "Falta de concentração",
+    "restlessness": "Inquietação",
+    "lethargy": "Letargia"
   },
   "Outros Sintomas": {
     "patches_in_throat": "Manchas na garganta",
@@ -115,19 +104,13 @@
     "phlegm": "Catarro",
     "runny_nose": "Nariz escorrendo",
     "toxic_look_(typhos)": "Aparência tóxica (tifo)",
-    "family_history": "Histórico familiar",
     "mucoid_sputum": "Escarro mucoso",
-    "rusty_sputum": "Escarro enferrujado",
     "visual_disturbances": "Distúrbios visuais",
-    "receiving_blood_transfusion": "Recebendo transfusão de sangue",
-    "receiving_unsterile_injections": "Recebendo injeções não estéreis",
-    "stomach_bleeding": "Hemorragia estomacal",
     "distention_of_abdomen": "Distensão do abdômen",
-    "history_of_alcohol_consumption": "Histórico de consumo de álcool",
     "fluid_overload.1": "Sobrecarga de fluido",
     "blood_in_sputum": "Sangue no escarro",
     "prominent_veins_on_calf": "Veias proeminentes na panturrilha",
-    "painful_walking": "Caminhada dolorosa",
-    "pus_filled_pimples": "Espinhas cheias de pus"
+    "dehydration": "Desidratação",
+    "sunken_eyes": "Olhos fundos"
   }
 }
